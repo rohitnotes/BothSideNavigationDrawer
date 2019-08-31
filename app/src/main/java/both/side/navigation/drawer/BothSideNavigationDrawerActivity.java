@@ -78,12 +78,21 @@ public class BothSideNavigationDrawerActivity extends AppCompatActivity {
         imageViewLeft=findViewById(R.id.left_menu);
         imageViewRight=findViewById(R.id.right_menu);
 
-        imageViewLeft.setOnClickListener(new View.OnClickListener() {
+           imageViewLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (drawerLayout.isDrawerOpen(GravityCompat.START))
+                {
                     drawerLayout.closeDrawer(GravityCompat.START);
-                else drawerLayout.openDrawer(GravityCompat.START);
+                }
+                else
+                {
+                    if (drawerLayout.isDrawerOpen(GravityCompat.END))
+                    {
+                        drawerLayout.closeDrawer(GravityCompat.END);
+                    }
+                    drawerLayout.openDrawer(GravityCompat.START);
+                }
             }
         });
 
@@ -91,8 +100,17 @@ public class BothSideNavigationDrawerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (drawerLayout.isDrawerOpen(GravityCompat.END))
+                {
                     drawerLayout.closeDrawer(GravityCompat.END);
-                else drawerLayout.openDrawer(GravityCompat.END);
+                }
+                else
+                {
+                    if (drawerLayout.isDrawerOpen(GravityCompat.START))
+                    {
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                    }
+                    drawerLayout.openDrawer(GravityCompat.END);
+                }
             }
         });
 
